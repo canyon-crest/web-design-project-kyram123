@@ -1,13 +1,84 @@
 body{
-    background-color:lightpink;
+    background-color:rgb(195, 95, 147);
     color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    }
+#container{
+    width: 800px;
+    margin: auto;
+    background-color: black;
+    padding: 40px;
+}
+h1{
+    background-color:rgb(103, 90, 90);
+    border: 5px dotted white;
+    border-radius: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    text-align: center;
+    width: 75%;
+    margin: 0 auto;
 }
 
 p{
     line-height: 2.5em;
+    background-color: pink;
+    padding: 10px;
+    border: 5px double grey;
 }
-
+h2{
+    font-size: 1.3em;
+    text-align: center;
+    font-style: italic;
+}
+h3 {
+    border-left: 20px groove pink;
+    padding-left: 20px;
+    border-radius: 50px;
+    border-bottom: 2px double pink;
+    width: 180px;
+    background-color: rgb(122, 114, 122);
+}
 img{
     width:200px;
     float: left;
+    border: 3px solid rgb(220, 114, 156);
+    border-radius: 3px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+/*PSEUDO SELCTORS */
+a:link{
+    color: rgb(203, 76, 129);
+    font-weight: bold;
+    text-decoration: none;
+}
+a:visited{
+    color: rgb(158, 141, 148);
+}
+a:hover{
+    color: rgb(148, 46, 87);
+    text-decoration: underline;
+}
+a:active{
+    color:rgb(246, 243, 245);
+}
+/* ID RULES*/
+#dolphin{
+    border-color:cadetblue;
+}
+
+#p2{
+    background-color:rgb(183, 199, 228);
+}
+
+/* CLASS RULE */
+.highlight{
+    background: rgb(255, 197, 248);
+    color: black;
+    padding: 2px;
+    border-radius: 3px;
+    font-weight: bold;
 }
