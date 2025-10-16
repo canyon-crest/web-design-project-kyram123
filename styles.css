@@ -51,7 +51,7 @@ img{
 
 /*PSEUDO SELCTORS */
 a:link{
-    color: rgb(203, 76, 129);
+    color: rgb(111, 41, 70);
     font-weight: bold;
     text-decoration: none;
 }
@@ -70,8 +70,16 @@ a:active{
     border-color:cadetblue;
 }
 
+#pumpkin{
+    border-color:rgb(236, 185, 0);
+}
+
 #p2{
     background-color:rgb(183, 199, 228);
+}
+
+#p3{
+    background-color: rgb(186, 97, 61); 
 }
 
 /* CLASS RULE */
