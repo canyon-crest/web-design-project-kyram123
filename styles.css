@@ -40,6 +40,11 @@ h3 {
     width: 180px;
     background-color: rgb(122, 114, 122);
 }
+
+footer{
+    background-color:rgb(236, 185, 0);
+    padding: 20px;
+}
 img{
     width:200px;
     float: left;
