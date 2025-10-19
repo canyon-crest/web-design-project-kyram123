@@ -45,26 +45,21 @@ footer{
     background-color:rgb(236, 185, 0);
     padding: 20px;
 }
-img{
-    width:200px;
-    float: left;
-    border: 3px solid rgb(220, 114, 156);
-    border-radius: 3px;
-    margin-right: 20px;
-    margin-top: 10px;
-}
 
 /* ID RULES*/
 #dolphin{
     border-color:cadetblue;
+    width: 200px;
 }
 
 #pumpkin{
     border-color:rgb(236, 185, 0);
+    width: 200px;
 }
 
 #p2{
     background-color:#56bcc7;
+    
 }
 
 #p3{
@@ -73,7 +68,7 @@ img{
 
 /* CLASS RULE */
 .highlight{
-    background: rgb(255, 197, 248);
+    background: #edbe15;
     color: black;
     padding: 2px;
     border-radius: 3px;
@@ -183,4 +178,77 @@ a:hover{
 }
 a:active{
     color:rgb(246, 243, 245);
+}
+
+/* ---- Image overlay (inline, non-disruptive) ---- */
+.img-container {
+  position: relative;
+  display: inline-block;
+  float: left;
+  vertical-align: top;
+  margin-right: 20px; /* add horizontal gap between image and text */
+  border-radius: 15px;
+  /* do NOT set width here — the #pic1/#pic2/#pic3 IDs control sizes */
+}
+
+.img-container .fade-image {
+  display: block;
+  float: none;              /* override any global img float so only container floats */
+  width: auto;              /* actual width comes from #pic1/#pic2/#pic3 */
+  height: auto;
+  border-radius: 15px;
+  border: 3px solid #EDAFB8; /* matches your original border */
+  margin: 0;                /* override global img margin-top so overlay lines up */
+}
+
+/* Semi-transparent overlay */
+.img-container .fade-overlay {
+  position: absolute;
+  inset: 0;                 /* fill the container exactly */
+  /* remove fixed 90% width/height so it lines up with the image */
+  background-color: rgba(0, 123, 167, 0.55); /* semi-transparent */
+  opacity: 0;
+  border-radius: 15px;
+  transition: opacity 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;     /* keep hover behaviour predictable for small cursors */
+}
+
+/* show overlay on hover of the container */
+.img-container:hover .fade-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fade-text {
+  color: white;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 8px;
+  pointer-events: none;
+}
+
+/* show overlay on hover of the container */
+.img-container:hover .fade-overlay,
+.img-container:focus-within .fade-overlay,
+.img-container:focus .fade-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* make the container focusable without default outline (optional) */
+.img-container {
+  outline: none;
+}
+
+img{
+    width:200px;
+    float: left;
+    border: 3px solid rgb(220, 114, 156);
+    border-radius: 3px;
+    margin-right: 20px; /* fixed: added missing semicolon previously */
+    margin-top: 10px;
 }
