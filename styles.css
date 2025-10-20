@@ -4,6 +4,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     }
+
 #container{
     width: 1000px;
     margin: 50px auto;
@@ -185,28 +186,40 @@ a:active{
   position: relative;
   display: inline-block;
   float: left;
-  vertical-align: top;
-  margin-right: 20px; /* add horizontal gap between image and text */
+  vertical-align: top; /* Ensure consistent vertical alignment */
+  margin-right: 20px;
   border-radius: 15px;
-  /* do NOT set width here — the #pic1/#pic2/#pic3 IDs control sizes */
+}
+
+/* remove the small gap below inline images */
+.img-container {
+  line-height: 0; /* remove extra line height */
+}
+
+.img-container img,
+.fade-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 4px; /* Consistent bottom margin */
+  vertical-align: top; /* added to align images to the top */
 }
 
 .img-container .fade-image {
   display: block;
-  float: none;              /* override any global img float so only container floats */
-  width: auto;              /* actual width comes from #pic1/#pic2/#pic3 */
+  float: none;
+  width: auto;
   height: auto;
   border-radius: 15px;
-  border: 3px solid #EDAFB8; /* matches your original border */
-  margin: 0;                /* override global img margin-top so overlay lines up */
+  border: 3px solid #EDAFB8;
+  margin: 0;
 }
 
 /* Semi-transparent overlay */
 .img-container .fade-overlay {
   position: absolute;
-  inset: 0;                 /* fill the container exactly */
-  /* remove fixed 90% width/height so it lines up with the image */
-  background-color: rgba(0, 123, 167, 0.55); /* semi-transparent */
+  inset: 0;
+  background-color: rgba(0, 123, 167, 0.55);
   opacity: 0;
   border-radius: 15px;
   transition: opacity 0.35s ease;
@@ -214,7 +227,7 @@ a:active{
   align-items: center;
   justify-content: center;
   text-align: center;
-  pointer-events: none;     /* keep hover behaviour predictable for small cursors */
+  pointer-events: none;
 }
 
 /* show overlay on hover of the container */
@@ -251,4 +264,5 @@ img{
     border-radius: 3px;
     margin-right: 20px; /* fixed: added missing semicolon previously */
     margin-top: 10px;
+    vertical-align: top; /* added to align images to the top */
 }
