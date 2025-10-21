@@ -24,7 +24,7 @@ h1{
 
 p{
     line-height: 2.5em;
-    background-color: #f96e72;
+    background-color: #7caddd;
     padding: 10px;
     border: 5px double grey;
 }
@@ -43,7 +43,7 @@ h3 {
 }
 
 footer{
-    background-color:rgb(236, 185, 0);
+    background-color:rgb(255, 227, 124);
     padding: 20px;
 }
 
@@ -64,28 +64,39 @@ footer{
 }
 
 #p3{
-    background-color: #8db1ce; 
+    background-color: #6688a3; 
 }
 
 /* CLASS RULE */
 .highlight{
-    background: #edbe15;
+    background: rgb(255, 233, 107);
     color: black;
     padding: 2px;
     border-radius: 3px;
     font-weight: bold;
 }
 
-#sidebar{
-    background-color: #edbe15;
-    width: 300px;
-    line-height: 2.25em;
-    border: 2px solid white;
-    float: right;
-    margin: 20px;
-    margin-top: 70px;
+#main-content {
+  display: flex;
+  flex-wrap: wrap; /* allows sidebar and content to stack on smaller screens */
+  align-items: flex-start;
 }
 
+#sidebar {
+  flex: 0 0 250px; /* fixed width for sidebar */
+  background-color: #087E8B;
+  border: 2px solid white;
+  padding: 15px;
+  margin-right: 20px; /* space between sidebar and text */
+  margin-top: 100px;   /* <-- moved further down; adjust this value as needed */
+  box-sizing: border-box;
+}
+
+#content-tabs {
+  flex: 1;
+}
+
+/* Keep headings inside the sidebar nicely */
 #sidebar h3{
     border: none;
     text-align: center;
@@ -111,29 +122,60 @@ li{
 @media (max-width:992px){
     #container{
         background-color:#155e89;
-        width: 100%;
+        width: 90%;
+        margin: 50px auto; /* center */
+        padding: 20px;
     } 
-    body,p,#container, #p2, h3{
-        margin: 0;
-        padding: 0;
-    }
+
+    /* Remove the overly aggressive reset for p and h3 */
     p{
         padding: 20px;
+        margin: 15px 0; /* add spacing between paragraphs and headings */
+        line-height: 2.5em;
+    }
+
+    h2{
+        margin: 25px 0 10px; /* top/bottom spacing similar to larger screens */
+    }
+
+    h3{
+        margin: 20px 0 10px;
+        padding-left: 20px;
     }
 }
 
 @media (max-width:768px){
     #sidebar{
         display:none;
+        width: 100%;
+    }
+
+    #container{
         background-color: #155e89;
+        width: 95%;
+        margin: 30px auto; /* center with smaller vertical margin */
+        padding: 16px;
+    }
+
+    p{
+        padding: 16px;
+        margin: 15px 0; /* maintain spacing */
+        line-height: 2.5em;
+    }
+
+    h2{
+        margin: 25px 0 10px;
+    }
+
+    h3{
+        margin: 20px 0 10px;
     }
 }
 
 .site-footer{
-  background: #edbe15;
+  background: rgb(0, 46, 99);
   padding: 24px 16px;
   margin-top: 32px;
-  border-top: 1px solid #e0e0e0;
 }
 
 .footer-grid{
@@ -156,6 +198,57 @@ li{
   margin: 0;
 }
 
+/* add spacing between items in footer lists (Quick Facts / address & phone) */
+.footer-col ul li {
+  margin-bottom: 10px; /* space between items */
+}
+
+/* avoid extra space after the last item */
+.footer-col ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Social icon styling in footer */
+.footer-col .social-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer-col .social-list li {
+  margin: 0;
+}
+
+.footer-col .social-list a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  text-decoration: none;
+  padding: 8px; /* increased to fit larger icons */
+  border-radius: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.12s ease;
+}
+
+.footer-col .social-list a:hover,
+.footer-col .social-list a:focus {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px) scale(1.06);
+  outline: none;
+}
+
+/* ensure SVG icons size and inherit color */
+.footer-col .social-list svg {
+  width: 32px;   /* larger icon size */
+  height: 32px;
+  display: block;
+  color: inherit; /* stroke uses currentColor */
+  flex-shrink: 0;
+}
+
 /* Responsive: stack columns on small screens */
 @media (max-width: 700px){
   .footer-grid{
@@ -166,12 +259,12 @@ li{
 
 /*PSEUDO SELCTORS */
 a:link{
-    color: rgb(111, 41, 70);
+    color: rgb(58, 151, 251);
     font-weight: bold;
     text-decoration: none;
 }
 a:visited{
-    color: rgb(158, 141, 148);
+    color: rgb(58, 151, 251);
 }
 a:hover{
     color: rgb(148, 46, 87);
@@ -232,4 +325,41 @@ a:active{
 .img-container:focus-within .fade-overlay {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* Tabs: match site font and color scheme */
+.tab-list{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.tab-button{
+  font-family: inherit;                /* same font as site */
+  color: white;                        /* match page text color */
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.35);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.12s ease;
+}
+
+/* subtle hover using the existing highlight color */
+.tab-button:hover{
+  background: rgba(255,227,124,0.08);
+  color: white;
+}
+
+/* selected / focused state uses the site's highlight and container colors */
+.tab-button[aria-selected="true"],
+.tab-button:focus{
+  background: rgb(255, 227, 124); /* existing highlight */
+  color: #155e89;                 /* container blue for contrast */
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  border-color: rgba(0,0,0,0.06);
 }
