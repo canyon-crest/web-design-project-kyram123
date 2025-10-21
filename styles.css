@@ -186,39 +186,33 @@ a:active{
   position: relative;
   display: inline-block;
   float: left;
-  vertical-align: top; /* Ensure consistent vertical alignment */
+  vertical-align: top;
   margin-right: 20px;
+  margin-top: 10px;
+  width: 200px;
   border-radius: 15px;
+  line-height: 0;
+  outline: none;
 }
 
-/* remove the small gap below inline images */
-.img-container {
-  line-height: 0; /* remove extra line height */
-}
-
-.img-container img,
-.fade-image {
+/* Make the image perfectly fill the container */
+.img-container img {
   display: block;
   width: 100%;
   height: auto;
-  margin-bottom: 4px; /* Consistent bottom margin */
-  vertical-align: top; /* added to align images to the top */
-}
-
-.img-container .fade-image {
-  display: block;
-  float: none;
-  width: auto;
-  height: auto;
+  margin: 0;
   border-radius: 15px;
   border: 3px solid #EDAFB8;
-  margin: 0;
+  box-sizing: border-box; /* ✅ ensures border stays inside width */
 }
 
-/* Semi-transparent overlay */
+/* Overlay matches the exact inner area of the bordered image */
 .img-container .fade-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 123, 167, 0.55);
   opacity: 0;
   border-radius: 15px;
@@ -228,41 +222,14 @@ a:active{
   justify-content: center;
   text-align: center;
   pointer-events: none;
+  box-sizing: border-box;
+  /* ✅ adjust overlay to include the image’s border */
+  border: 3px solid #EDAFB8;
 }
 
-/* show overlay on hover of the container */
-.img-container:hover .fade-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.fade-text {
-  color: white;
-  font-size: 14px;
-  line-height: 1.2;
-  padding: 8px;
-  pointer-events: none;
-}
-
-/* show overlay on hover of the container */
+/* Hover effect */
 .img-container:hover .fade-overlay,
-.img-container:focus-within .fade-overlay,
-.img-container:focus .fade-overlay {
+.img-container:focus-within .fade-overlay {
   opacity: 1;
   pointer-events: auto;
-}
-
-/* make the container focusable without default outline (optional) */
-.img-container {
-  outline: none;
-}
-
-img{
-    width:200px;
-    float: left;
-    border: 3px solid rgb(220, 114, 156);
-    border-radius: 3px;
-    margin-right: 20px; /* fixed: added missing semicolon previously */
-    margin-top: 10px;
-    vertical-align: top; /* added to align images to the top */
 }

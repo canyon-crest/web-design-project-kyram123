@@ -2,63 +2,54 @@
 <html>
   <head>
     <title>Kyra Malik</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
-    <!-- Heading drop-in animation (non-layout-changing, keeps centered)
-         Now: each part/character of the H1 drops in individually -->
+
     <style>
-      /* keep layout/centering unchanged */
       h1, h2, h3 {
         will-change: transform, opacity, filter;
       }
 
-      /* Characters inside the H1 animate individually without affecting layout */
       h1 .char {
-        display: inline-block; /* preserve inline flow but allow transforms per char */
+        display: inline-block;
         transform: translateY(-36px);
         opacity: 0;
         filter: blur(6px);
         will-change: transform, opacity, filter;
         animation-name: char-drop;
-        animation-duration: 0.75s;
-        animation-timing-function: cubic-bezier(.2,.9,.3,1);
+        animation-timing-function: cubic-bezier(.2, .9, .3, 1);
         animation-fill-mode: forwards;
       }
 
-      /* Keep previous behavior for H2/H3 headings (optional) */
       .heading-drop {
         animation-name: heading-drop;
-        animation-duration: 0.8s;
-        animation-timing-function: cubic-bezier(.2,.9,.3,1);
+        animation-timing-function: cubic-bezier(.2, .9, .3, 1);
         animation-fill-mode: forwards;
       }
 
       @keyframes char-drop {
-        0%   { transform: translateY(-36px); opacity: 0; filter: blur(6px); }
-        60%  { transform: translateY(6px);   opacity: 1; filter: blur(0); }
-        100% { transform: translateY(0);    opacity: 1; filter: blur(0); }
+        0% { transform: translateY(-36px); opacity: 0; filter: blur(6px); }
+        60% { transform: translateY(6px); opacity: 1; filter: blur(0); }
+        100% { transform: translateY(0); opacity: 1; filter: blur(0); }
       }
 
       @keyframes heading-drop {
-        0%   { transform: translateY(-36px); opacity: 0; filter: blur(6px); }
-        60%  { transform: translateY(6px);   opacity: 1; filter: blur(0); }
-        100% { transform: translateY(0);    opacity: 1; filter: blur(0); }
+        0% { transform: translateY(-36px); opacity: 0; filter: blur(6px); }
+        60% { transform: translateY(6px); opacity: 1; filter: blur(0); }
+        100% { transform: translateY(0); opacity: 1; filter: blur(0); }
       }
     </style>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        // Split H1 text into spans (one per character) so each part drops individually
         const h1 = document.querySelector('h1');
         if (h1) {
           const text = h1.textContent || '';
-          h1.textContent = ''; // clear original text
-          // create span for each character, preserving spaces
+          h1.textContent = '';
           Array.from(text).forEach((ch, i) => {
             const span = document.createElement('span');
             span.className = 'char';
-            span.textContent = ch === ' ' ? '\u00A0' : ch; // non-breaking space to preserve gaps
-            // stagger with a small increment per character; add tiny random jitter
+            span.textContent = ch === ' ' ? '\u00A0' : ch;
             const delay = (i * 0.04 + Math.random() * 0.03).toFixed(2) + 's';
             const dur = (0.65 + Math.random() * 0.25).toFixed(2) + 's';
             span.style.animationDelay = delay;
@@ -67,8 +58,7 @@
           });
         }
 
-        // Apply drop animation to H2/H3, but leave H1 handled by per-char spans
-        const headings = Array.from(document.querySelectorAll('h2, h3'));
+        const headings = document.querySelectorAll('h2, h3');
         headings.forEach((el, i) => {
           el.classList.add('heading-drop');
           const baseDelay = i * 0.18;
@@ -77,7 +67,6 @@
           el.style.animationDuration = (0.75 + Math.random() * 0.22).toFixed(2) + 's';
         });
 
-        // Match the travel-photo width to the dolphin image width
         const travel = document.getElementById('travel-photo');
         const dolphin = document.getElementById('dolphin');
         function matchTravelWidth() {
@@ -91,72 +80,92 @@
       });
     </script>
   </head>
-  
+
   <body>
     <div id="container">
-    <h1>Kyra Malik</h1>
-    <h2 class="highlight">Yesterday is history, tomorrow is a mystery, but today is a gift. That is why it is called the present.</h2>
-    <div id="sidebar">
-    <h3>About Me</h3>
-    <ul>
-    <li>Name: Kyra Malik</li>
-    <li>School: Canyon Crest Academy</li>
-    <li>Grade: Sophomore</li>
-    </ul>
-    </div>
-    <h3>Traveling</h3>
-    <p><span class="img-container" tabindex="0">
-        <img src="images/imagecopy.png" id="travel-photo" class="fade-image" alt="Travel photo">
-        <span class="fade-overlay">
-          <span class="fade-text">Travel photo</span>
+      <h1>Kyra Malik</h1>
+      <h2 class="highlight">Yesterday is history, tomorrow is a mystery, but today is a gift. That is why it is called the present.</h2>
+
+      <div id="sidebar">
+        <h3>About Me</h3>
+        <ul>
+          <li>Name: Kyra Malik</li>
+          <li>School: Canyon Crest Academy</li>
+          <li>Grade: Sophomore</li>
+        </ul>
+      </div>
+
+      <h3>Traveling</h3>
+      <p>
+        <span class="img-container" tabindex="0">
+          <img src="images/imagecopy.png" id="travel-photo" class="fade-image" alt="Travel photo">
+          <span class="fade-overlay">
+            <span class="fade-text">Travel photo</span>
+          </span>
         </span>
-      </span>I am someone who loves to travel and explore the world. I have been to North America, Europe, Asia, and Africa. <span class="highlight">This includes 12 US states and 10 countries. </span>Some of my favorite vacations include ones to Italy, Switzerland, and Hawaii. I also enjoy exploring the unique cuisines of the places I visit such as the cheese fondue I tried in Switzerland and the Gelato I had in Italy. Furthermore, I am eager to learn more about the history of the places I visit and I definitely learned a lot through my to Egypt where I observed ancient <a href= "https://www.britannica.com/topic/hieroglyph" target="_blank">hieroglyphics</a> and mesmerizing monuments. Overall, I enjoy traveling and learning about new places and cultures.</p>
+        I am someone who loves to travel and explore the world. I have been to North America, Europe, Asia, and Africa.
+        <span class="highlight">This includes 12 US states and 10 countries.</span> Some of my favorite vacations include ones to Italy, Switzerland, and Hawaii.
+        I also enjoy exploring the unique cuisines of the places I visit such as the cheese fondue I tried in Switzerland and the Gelato I had in Italy.
+        Furthermore, I am eager to learn more about the history of the places I visit and I definitely learned a lot through my trip to Egypt where I observed ancient
+        <a href="https://www.britannica.com/topic/hieroglyph" target="_blank">hieroglyphics</a> and mesmerizing monuments.
+        Overall, I enjoy traveling and learning about new places and cultures.
+      </p>
 
-<h3>Favorite Animal</h3>
-<p id="p2"><span class="img-container" tabindex="0">
-    <img src="images/image.png" id="dolphin" class="fade-image" alt="A picture of a dolphin">
-    <span class="fade-overlay">
-      <span class="fade-text">A picture of a dolphin</span>
-    </span>
-  </span>
-My favorite animal is a <a href="https://www.britannica.com/animal/dolphin-mammal" target="_blank">dolphin</a> due to their playful nature and their witty behavior. There are 49 dolphin species yet my favorite is the Orca. I can remember going whale watching and being surrounded by a pod of over 100 dolphins as they swam around our boat and this experience was mesmerizing. <span class="highlight"> I also enjoy the dolphins show at Sea World as one can see how smart these dolphins truly are.</span>Found in almost all parts of the world, these marine mammals definitely attract a lot of attention wherever they are!</p>
+      <h3>Favorite Animal</h3>
+      <p id="p2">
+        <span class="img-container" tabindex="0">
+          <img src="images/image.png" id="dolphin" class="fade-image" alt="A picture of a dolphin">
+          <span class="fade-overlay">
+            <span class="fade-text">A picture of a dolphin</span>
+          </span>
+        </span>
+        My favorite animal is a <a href="https://www.britannica.com/animal/dolphin-mammal" target="_blank">dolphin</a> due to their playful nature and witty behavior.
+        There are 49 dolphin species yet my favorite is the Orca. I can remember going whale watching and being surrounded by a pod of over 100 dolphins as they swam around our boat — it was mesmerizing.
+        <span class="highlight">I also enjoy the dolphin shows at Sea World as one can see how smart these dolphins truly are.</span>
+        Found in almost all parts of the world, these marine mammals definitely attract a lot of attention wherever they are!
+      </p>
 
-<h3>Favorite Season</h3>
-<p id="p3"><span class="img-container" tabindex="0">
-      <img src="images/imagecopy2.png" id="pumpkin" class="fade-image" alt="Pumpkin">
-      <span class="fade-overlay">
-        <span class="fade-text">Pumpkin</span>
-      </span>
-    </span>My favorite time of the year is the fall, usually from October to December. To begin, I enjoy seeing the deciduous trees with their red and orange leaves. Furthermore, <span class="highlight">I enjoy the pumpkin spice flavor in many dishes and drinks, especially pumpkin pie <a href="https://tastesbetterfromscratch.com/pumpkin-pie-with-caramel-pecan-topping/" target="_blank">pumpkin pie</span></a>. Additionally, fall features many holidays including Halloween and Thanksgiving Break. Moreover, I enjoy warm drinks like hot chocolate which you can find almost everywhere during the fall. Therefore, in my opinion, fall is the best season of the year.</p>
-  </div>
-  </body>
-
-  </div>
-
-  <footer class="site-footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>Author</h4>
-        <p>Kyra Malik</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Social</h4>
-        <ul>
-          <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
-          <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
-          <li><a href="https://mail.google.com/" target="_blank">Gmail</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Quick Facts</h4>
-        <ul>
-          <li>Address: 5951 Village Center Loop Rd, San Diego, CA 92130</li>
-          <li>Phone Number (CCA): (858) 350-0253</li>
-        </ul>
-      </div>
+      <h3>Favorite Season</h3>
+      <p id="p3">
+        <span class="img-container" tabindex="0">
+          <img src="images/imagecopy2.png" id="pumpkin" class="fade-image" alt="Pumpkin">
+          <span class="fade-overlay">
+            <span class="fade-text">Pumpkin</span>
+          </span>
+        </span>
+        My favorite time of the year is the fall, usually from October to December. I enjoy seeing the deciduous trees with their red and orange leaves.
+        Furthermore, <span class="highlight">I enjoy the pumpkin spice flavor in many dishes and drinks, especially
+        <a href="https://tastesbetterfromscratch.com/pumpkin-pie-with-caramel-pecan-topping/" target="_blank">pumpkin pie</a>.</span>
+        Additionally, fall features many holidays including Halloween and Thanksgiving Break.
+        Moreover, I enjoy warm drinks like hot chocolate which you can find almost everywhere during the fall.
+        Therefore, in my opinion, fall is the best season of the year.
+      </p>
     </div>
-  </footer>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Author</h4>
+          <p>Kyra Malik</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Social</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+            <li><a href="https://mail.google.com/" target="_blank">Gmail</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Facts</h4>
+          <ul>
+            <li>Address: 5951 Village Center Loop Rd, San Diego, CA 92130</li>
+            <li>Phone Number (CCA): (858) 350-0253</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
