@@ -8,7 +8,7 @@ body{
 #container{
     width: 1000px;
     margin: 50px auto;
-    background-color: #0B3954;
+    background-color: #155e89;;
     padding: 60px;
 }
 h1{
@@ -110,12 +110,11 @@ li{
 
 @media (max-width:992px){
     #container{
-        background-color:#1a75aa;
+        background-color:#155e89;
         width: 100%;
     } 
     body,p,#container, #p2, h3{
         margin: 0;
-        border: none;
         padding: 0;
     }
     p{
@@ -126,6 +125,7 @@ li{
 @media (max-width:768px){
     #sidebar{
         display:none;
+        background-color: #155e89;
     }
 }
 
