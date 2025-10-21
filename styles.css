@@ -48,6 +48,10 @@ footer{
 }
 
 /* ID RULES*/
+#travel-photo{
+    border-color:rgb(237, 175, 184);
+    width: 200px;
+}
 #dolphin{
     border-color:cadetblue;
     width: 200px;
